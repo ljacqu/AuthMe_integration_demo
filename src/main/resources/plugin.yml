@@ -1,0 +1,14 @@
+name: AuthMe sample integration
+main: ch.jalu.authme.integrationdemo.SamplePlugin
+version: 0.1
+softdepend:
+    - Vault
+    - Essentials
+    - AuthMe
+commands:
+    toggleboat:
+        description: Toggles the boat wood type the player is in
+        usage: '/toggleboat'
+    firesword:
+        description: fs.
+        usage: '/firesword [player]'
