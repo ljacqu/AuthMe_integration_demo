@@ -8,5 +8,8 @@ commands:
         description: Toggles the boat wood type the player is in
         usage: '/toggleboat'
     firesword:
-        description: fs.
+        description: Toggles the fire sword feature for the given player
         usage: '/firesword [player]'
+    exists:
+        description: Checks if a username is registered in AuthMe
+        usage: '/exists <name>'
