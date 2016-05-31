@@ -8,28 +8,17 @@
     <artifactId>integrationdemo</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
-        <!-- Change Bukkit Version HERE! -->
-        <bukkit.version>1.9.4-R0.1-SNAPSHOT</bukkit.version>
+        <!-- Change Spigot version here -->
+        <spigot.version>1.9.4-R0.1-SNAPSHOT</spigot.version>
+        <!-- Change AuthMe version here -->
+        <authme.version>5.2-SNAPSHOT</authme.version>
     </properties>
 
     <build>
         <finalName>authme-integrationdemo</finalName>
         <resources>
             <resource>
-                <directory>.</directory>
-                <filtering>false</filtering>
-                <includes>
-                    <include>LICENSE</include>
-                </includes>
-            </resource>
-            <resource>
                 <directory>src/main/resources/</directory>
-                <filtering>true</filtering>
-            </resource>
-            <resource>
-                <directory>src/main/resources/messages/</directory>
-                <targetPath>./messages/</targetPath>
-                <filtering>false</filtering>
             </resource>
         </resources>
 
@@ -44,15 +33,6 @@
                     <target>1.7</target>
                 </configuration>
             </plugin>
-            <!-- Test Plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.19.1</version>
-                <configuration>
-                    <argLine>-Dfile.encoding=UTF-8</argLine>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
@@ -61,18 +41,6 @@
         <repository>
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots</url>
-        </repository>
-
-        <!-- Essentials Repo -->
-        <repository>
-            <id>ess-repo</id>
-            <url>http://repo.ess3.net/content/groups/essentials</url>
-        </repository>
-
-        <!-- Vault Repo -->
-        <repository>
-            <id>vault-repo</id>
-            <url>http://nexus.theyeticave.net/content/repositories/pub_releases</url>
         </repository>
 
         <!-- Xephi Repo -->
@@ -88,7 +56,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>${bukkit.version}</version>
+            <version>${spigot.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -96,44 +64,8 @@
         <dependency>
             <groupId>fr.xephi</groupId>
             <artifactId>authme</artifactId>
-            <version>5.2-SNAPSHOT</version>
+            <version>${authme.version}</version>
             <optional>true</optional>
-        </dependency>
-
-        <!-- Vault, http://dev.bukkit.org/bukkit-plugins/vault/ -->
-        <dependency>
-            <groupId>net.milkbowl.vault</groupId>
-            <artifactId>VaultAPI</artifactId>
-            <version>1.5</version>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.bukkit</groupId>
-                    <artifactId>bukkit</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.bukkit</groupId>
-                    <artifactId>craftbukkit</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <!-- Essentials plugin -->
-        <dependency>
-            <groupId>net.ess3</groupId>
-            <artifactId>Essentials</artifactId>
-            <version>2.13-SNAPSHOT</version>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.bukkit</groupId>
-                    <artifactId>bukkit</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.bukkit</groupId>
-                    <artifactId>craftbukkit</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
     </dependencies>
