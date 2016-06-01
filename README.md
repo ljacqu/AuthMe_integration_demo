@@ -1,6 +1,18 @@
 # AuthMe Integration Demo
 This is a small Minecraft plugin that shows how to hook into [AuthMe](https://github.com/AuthMe-Team/AuthMeReloaded).
 
+- [1. Declare AuthMe dependency](#1-declare-authme-dependency)
+  - [1.1. pom.xml](#11-pomxml)
+  - [1.2. plugin.yml](#12-pluginyml)
+- [2. Interacting with AuthMe](#2-interacting-with-authme)
+  - [2.1. Listening to AuthMe events](#21-listening-to-authme-events)
+  - [2.2. Using the AuthMe API](#22-using-the-authme-api)
+- [3. Checking that AuthMe is available](#3-checking-that-authme-is-available)
+  - [3.1. Check for availability on startup](#31-check-for-availability-on-startup)
+      - [Tip: Check for API availability within the hooks class](#tip-check-for-api-availability-within-the-hooks-class)
+  - [3.2. Check if AuthMe gets enabled or disabled](#32-check-if-authme-gets-enabled-or-disabled)
+- [4. Working example](#4-working-example)
+
 ## 1. Declare AuthMe dependency
 You need to declare a soft dependency to AuthMe in order to be able to use its functionality.
 
@@ -120,7 +132,7 @@ It is recommend that you check when AuthMe gets enabled or disabled as well. Thi
 that your plugin will run smoothly.
 
 ```java
-// You can put thisin any listener class; this is a standard Bukkit event
+// You can put this in any listener class; this is a standard Bukkit event
 @EventHandler 
 public void onDisable(PluginDisableEvent event) {
   if ("AuthMe".equals(event.getPlugin().getName())) {
