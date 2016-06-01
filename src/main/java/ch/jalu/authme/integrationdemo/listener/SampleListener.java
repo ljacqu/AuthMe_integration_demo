@@ -1,5 +1,6 @@
 package ch.jalu.authme.integrationdemo.listener;
 
+import ch.jalu.authme.integrationdemo.SamplePlugin;
 import ch.jalu.authme.integrationdemo.service.AuthMeHook;
 import ch.jalu.authme.integrationdemo.service.FireSwordService;
 import org.bukkit.entity.Fireball;
@@ -22,12 +23,12 @@ import static org.bukkit.inventory.EquipmentSlot.HAND;
  */
 public class SampleListener implements Listener {
 
+    private final SamplePlugin samplePlugin;
     private final FireSwordService fireSwordService;
-    private final AuthMeHook authMeHook;
 
-    public SampleListener(FireSwordService fireSwordService, AuthMeHook authMeHook) {
+    public SampleListener(SamplePlugin samplePlugin, FireSwordService fireSwordService) {
+        this.samplePlugin = samplePlugin;
         this.fireSwordService = fireSwordService;
-        this.authMeHook = authMeHook;
     }
 
     /**
@@ -38,7 +39,7 @@ public class SampleListener implements Listener {
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onPluginEnable(PluginEnableEvent event) {
         if ("AuthMe".equals(event.getPlugin().getName())) {
-            authMeHook.initializeAuthMeHook();
+            samplePlugin.registerAuthMeComponents();
         }
     }
 
@@ -50,7 +51,7 @@ public class SampleListener implements Listener {
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onPluginDisable(PluginDisableEvent event) {
         if ("AuthMe".equals(event.getPlugin().getName())) {
-            authMeHook.removeAuthMeHook();
+            samplePlugin.removeAuthMeHook();
         }
     }
 

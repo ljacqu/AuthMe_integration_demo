@@ -1,7 +1,6 @@
 package ch.jalu.authme.integrationdemo.service;
 
 import fr.xephi.authme.api.NewAPI;
-import org.bukkit.plugin.PluginManager;
 
 /**
  * AuthMe hook - class that handles talking with the AuthMe plugin.
@@ -14,12 +13,6 @@ import org.bukkit.plugin.PluginManager;
 public class AuthMeHook {
 
     private NewAPI authMeApi = null;
-
-    public AuthMeHook(PluginManager pluginManager) {
-        if (pluginManager.isPluginEnabled("AuthMe")) {
-            initializeAuthMeHook();
-        }
-    }
 
     public void initializeAuthMeHook() {
         authMeApi = NewAPI.getInstance();

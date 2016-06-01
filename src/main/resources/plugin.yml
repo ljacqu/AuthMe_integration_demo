@@ -1,4 +1,4 @@
-name: AuthMe sample integration
+name: AuthMe demo
 main: ch.jalu.authme.integrationdemo.SamplePlugin
 version: 0.1
 softdepend:
