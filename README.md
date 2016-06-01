@@ -55,12 +55,13 @@ softdepend:
 ## 2. Interacting with AuthMe
 Two ways are available to interact with AuthMe:
 
-1. Listen to AuthMe events <!-- TODO: javadoc link -->
-1. Use AuthMe's API <!-- TODO: javadoc link -->
+1. Listen to AuthMe events
+1. Use AuthMe's API
 
 ### 2.1. Listening to AuthMe events
-It is best to create a separate class (or classes) for listening to AuthMe events. As with regular Bukkit events, 
-simply declare `@EventHandler` methods that take an AuthMe event as argument.
+It is best to create a separate class (or classes) for listening to 
+[AuthMe events](http://ci.xephi.fr/job/AuthMeReloaded/javadoc/fr/xephi/authme/events/package-tree.html). 
+As with regular Bukkit events, simply declare `@EventHandler` methods that take an AuthMe event as argument.
 ```java
 import fr.xephi.authme.events.LoginEvent;
 
@@ -71,9 +72,10 @@ public void onLogin(LoginEvent event) {
 ```
 
 ### 2.2. Using the AuthMe API
-The AuthMe API allows you to perform various operations, such as registering a new name or querying AuthMe if a
-username password combination is correct. It is suggested that you wrap all method calls to the AuthMe API class in
-with a class of your own. This way you can easily manage loading and unloading the API (see next chapter).
+The AuthMe [NewAPI class](http://ci.xephi.fr/job/AuthMeReloaded/javadoc/fr/xephi/authme/api/NewAPI.html) allows you 
+to perform various operations, such as registering a new name or querying AuthMe if a username password combination 
+is correct. It is suggested that you wrap all method calls to the AuthMe API class in with a class of your own. 
+This way you can easily manage loading and unloading the API (see next chapter).
 
 ```java
 import fr.xephi.authme.api.NewAPI;
