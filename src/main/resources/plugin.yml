@@ -4,9 +4,6 @@ version: 0.1
 softdepend:
     - AuthMe
 commands:
-    toggleboat:
-        description: Toggles the boat wood type the player is in
-        usage: '/toggleboat'
     firesword:
         description: Toggles the fire sword feature for the given player
         usage: '/firesword [player]'

@@ -1,6 +1,9 @@
 package ch.jalu.authme.integrationdemo;
 
-import ch.jalu.authme.integrationdemo.command.*;
+import ch.jalu.authme.integrationdemo.command.CommandException;
+import ch.jalu.authme.integrationdemo.command.CommandImplementation;
+import ch.jalu.authme.integrationdemo.command.ExistsCommand;
+import ch.jalu.authme.integrationdemo.command.FireSwordCommand;
 import ch.jalu.authme.integrationdemo.listener.AuthMeListener;
 import ch.jalu.authme.integrationdemo.listener.SampleListener;
 import ch.jalu.authme.integrationdemo.service.AuthMeHook;
@@ -34,7 +37,6 @@ public class SamplePlugin extends JavaPlugin {
         AuthMeHook authMeHook = new AuthMeHook(pluginManager);
 
         commands = new HashMap<>();
-        registerCommand(new ToggleBoatCommand());
         registerCommand(new FireSwordCommand(fireSwordService));
         registerCommand(new ExistsCommand(authMeHook));
 
