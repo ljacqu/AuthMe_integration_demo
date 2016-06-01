@@ -23,7 +23,7 @@
         </resources>
 
         <plugins>
-            <!-- Maven Java Compiler -->
+            <!-- Maven Java compiler -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -37,13 +37,13 @@
     </build>
 
     <repositories>
-        <!-- SpigotMC Repo (Bukkit and SpigotAPI) -->
+        <!-- SpigotMC repo (Bukkit and SpigotAPI) -->
         <repository>
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots</url>
         </repository>
 
-        <!-- Xephi Repo -->
+        <!-- Xephi repo -->
         <repository>
             <id>xephi-repo</id>
             <url>http://ci.xephi.fr/plugin/repository/everything/</url>

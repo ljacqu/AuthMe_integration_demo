@@ -5,7 +5,7 @@ import ch.jalu.authme.integrationdemo.command.CommandImplementation;
 import ch.jalu.authme.integrationdemo.command.ExistsCommand;
 import ch.jalu.authme.integrationdemo.command.FireSwordCommand;
 import ch.jalu.authme.integrationdemo.listener.AuthMeListener;
-import ch.jalu.authme.integrationdemo.listener.SampleListener;
+import ch.jalu.authme.integrationdemo.listener.BukkitListener;
 import ch.jalu.authme.integrationdemo.service.AuthMeHook;
 import ch.jalu.authme.integrationdemo.service.FireSwordService;
 import org.bukkit.command.Command;
@@ -45,7 +45,7 @@ public class SamplePlugin extends JavaPlugin {
             new ExistsCommand(authMeHook));
 
         // Register the regular listener
-        SampleListener listener = new SampleListener(this, fireSwordService);
+        BukkitListener listener = new BukkitListener(this, fireSwordService);
         pluginManager.registerEvents(listener, this);
 
         // Register AuthMe components if it is available

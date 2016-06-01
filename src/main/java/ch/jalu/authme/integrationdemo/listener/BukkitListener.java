@@ -19,14 +19,14 @@ import static org.bukkit.inventory.EquipmentSlot.HAND;
  * Listener for standard events fired by Bukkit.
  * <p>
  * This class detects when AuthMe is enabled or disabled and initializes or removes
- * {@link AuthMeHook the hook} correspondingly.
+ * {@link AuthMeHook the hook} accordingly.
  */
-public class SampleListener implements Listener {
+public class BukkitListener implements Listener {
 
     private final SamplePlugin samplePlugin;
     private final FireSwordService fireSwordService;
 
-    public SampleListener(SamplePlugin samplePlugin, FireSwordService fireSwordService) {
+    public BukkitListener(SamplePlugin samplePlugin, FireSwordService fireSwordService) {
         this.samplePlugin = samplePlugin;
         this.fireSwordService = fireSwordService;
     }
