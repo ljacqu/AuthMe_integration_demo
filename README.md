@@ -9,7 +9,6 @@ This is a small Minecraft plugin that shows how to hook into [AuthMe](https://gi
   - [2.2. Using the AuthMe API](#22-using-the-authme-api)
 - [3. Checking that AuthMe is available](#3-checking-that-authme-is-available)
   - [3.1. Check for availability on startup](#31-check-for-availability-on-startup)
-      - [Tip: Check for API availability within the hooks class](#tip-check-for-api-availability-within-the-hooks-class)
   - [3.2. Check if AuthMe gets enabled or disabled](#32-check-if-authme-gets-enabled-or-disabled)
 - [4. Working example](#4-working-example)
 
@@ -119,9 +118,9 @@ public void onEnable() {
 }
 ```
 
-If you skip this check and, for instance, register an event listener with AuthMe events, you will encounter a
-`ClassDefNotFound` error as AuthMe isn't present on the server, and so the classes are unavailable (no way to get them!).
-Checking with the PluginManager beforehand prevents this.
+If you skip this check, AuthMe is not used, and, for instance, you register an event listener with AuthMe events, 
+you will encounter a `ClassDefNotFound` error as AuthMe isn't present on the server and so it doesn't know about those
+classes. Checking with the PluginManager that AuthMe is enabled prevents this.
 
 ##### Tip: Check for API availability _within_ the hooks class
 If you look at the Java code above, notice that `AuthMeHook` is _always_ initialized. The class checks internally
@@ -156,7 +155,7 @@ example for all points in this document.
 
 - 1.1. and 1.2: see pom.xml and plugin.yml
 - 2.1: [AuthMeListener](https://github.com/ljacqu/AuthMe_integration_demo/blob/master/src/main/java/ch/jalu/authme/integrationdemo/listener/AuthMeListener.java)
-  listens to AuthMe events. When a player wants to log in, there is a 10% chance that the login will request will not
+  listens to AuthMe events. When a player wants to log in, there is a 10% chance that the login request will not
   be granted (in `onPrelogin()`). Once a player has been logged in, the listener will make the player output a
   random greeting (in `onLogin()`).
 - 2.2: [AuthMeHook](https://github.com/ljacqu/AuthMe_integration_demo/blob/master/src/main/java/ch/jalu/authme/integrationdemo/service/AuthMeHook.java)
