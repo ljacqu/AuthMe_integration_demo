@@ -73,7 +73,7 @@ public void onLogin(LoginEvent event) {
 ### 2.2. Using the AuthMe API
 The AuthMe [NewAPI class](http://ci.xephi.fr/job/AuthMeReloaded/javadoc/fr/xephi/authme/api/NewAPI.html) allows you 
 to perform various operations, such as registering a new name or querying AuthMe if a username password combination 
-is correct. It is suggested that you wrap all method calls to the AuthMe API class in with a class of your own. 
+is correct. It is suggested that you wrap all method calls to the AuthMe API class with a class of your own. 
 This way you can easily manage loading and unloading the API (see next chapter).
 
 ```java
@@ -123,10 +123,9 @@ you will encounter a `ClassDefNotFound` error as AuthMe isn't present on the ser
 classes. Checking with the PluginManager that AuthMe is enabled prevents this.
 
 ##### Tip: Check for API availability _within_ the hooks class
-If you look at the Java code above, notice that `AuthMeHook` is _always_ initialized. The class checks internally
-whether or not it is hooked with AuthMe (cf. `authMeApi != null` check in 2.2). Your code will be much more
-difficult to maintain if your `authMeHook` is either `null` or present, as then you have to check for `null` before
-_every_ time you want to use your AuthMe hook.
+If you look at the Java code above, notice that `AuthMeHook` is _always_ initialized (i.e. it is never `null`). 
+The class checks internally whether or not it is hooked with AuthMe (cf. `authMeApi != null` check in 2.2). This way
+you can always call the methods of your class and don't have to worry about performing any checks outside of the class.
 
 ### 3.2. Check if AuthMe gets enabled or disabled
 It is recommend that you check when AuthMe gets enabled or disabled as well. This should rarely occur but guarantees
@@ -142,7 +141,7 @@ public void onDisable(PluginDisableEvent event) {
 }
 
 @EventHandler 
-public void onDisable(PluginEnableEvent event) {
+public void onEnable(PluginEnableEvent event) {
   if ("AuthMe".equals(event.getPlugin().getName())) {
     authMeHook.initializeHook();
   }
