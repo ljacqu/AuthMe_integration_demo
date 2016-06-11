@@ -1,4 +1,4 @@
-# AuthMe Integration Demo
+# AuthMe Integration Demo [![Dependency Status](https://www.versioneye.com/user/projects/575c02a87757a00034dc52cf/badge.svg?style=flat)](https://www.versioneye.com/user/projects/575c02a87757a00034dc52cf)
 This is a small Minecraft plugin that shows how to hook into [AuthMe](https://github.com/AuthMe-Team/AuthMeReloaded).
 
 - [1. Declare AuthMe dependency](#1-declare-authme-dependency)
