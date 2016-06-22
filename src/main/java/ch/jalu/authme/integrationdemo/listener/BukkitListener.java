@@ -13,6 +13,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.server.PluginDisableEvent;
 import org.bukkit.event.server.PluginEnableEvent;
 
+import javax.inject.Inject;
+
 import static org.bukkit.inventory.EquipmentSlot.HAND;
 
 /**
@@ -23,13 +25,12 @@ import static org.bukkit.inventory.EquipmentSlot.HAND;
  */
 public class BukkitListener implements Listener {
 
-    private final SamplePlugin samplePlugin;
-    private final FireSwordService fireSwordService;
+    @Inject
+    private SamplePlugin samplePlugin;
+    @Inject
+    private FireSwordService fireSwordService;
 
-    public BukkitListener(SamplePlugin samplePlugin, FireSwordService fireSwordService) {
-        this.samplePlugin = samplePlugin;
-        this.fireSwordService = fireSwordService;
-    }
+    BukkitListener() { }
 
     /**
      * Checks if AuthMe has been enabled and hooks into it in such a case.

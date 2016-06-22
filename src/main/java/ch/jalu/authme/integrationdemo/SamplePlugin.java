@@ -7,7 +7,8 @@ import ch.jalu.authme.integrationdemo.command.FireSwordCommand;
 import ch.jalu.authme.integrationdemo.listener.AuthMeListener;
 import ch.jalu.authme.integrationdemo.listener.BukkitListener;
 import ch.jalu.authme.integrationdemo.service.AuthMeHook;
-import ch.jalu.authme.integrationdemo.service.FireSwordService;
+import ch.jalu.injector.Injector;
+import ch.jalu.injector.InjectorBuilder;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.event.Listener;
@@ -32,21 +33,20 @@ public class SamplePlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        SampleLogger.setLogger(getLogger());
-        final PluginManager pluginManager = getServer().getPluginManager();
+        Injector injector = new InjectorBuilder()
+                .addDefaultHandlers("ch.jalu.authme.integrationdemo")
+                .create();
+        injector.register(SamplePlugin.class, this);
 
-        // Initialize services
-        FireSwordService fireSwordService = new FireSwordService();
-        authMeHook = new AuthMeHook();
+        SampleLogger.setLogger(getLogger());
+        authMeHook = injector.getSingleton(AuthMeHook.class);
 
         // Initialize commands
-        registerCommands(
-            new FireSwordCommand(fireSwordService),
-            new ExistsCommand(authMeHook));
+        registerCommands(injector.getSingleton(FireSwordCommand.class), injector.getSingleton(ExistsCommand.class));
 
         // Register the regular listener
-        BukkitListener listener = new BukkitListener(this, fireSwordService);
-        pluginManager.registerEvents(listener, this);
+        final PluginManager pluginManager = getServer().getPluginManager();
+        pluginManager.registerEvents(injector.getSingleton(BukkitListener.class), this);
 
         // Register AuthMe components if it is available
         if (pluginManager.isPluginEnabled("AuthMe")) {

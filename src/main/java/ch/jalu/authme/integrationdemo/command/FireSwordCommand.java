@@ -5,6 +5,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import javax.inject.Inject;
 import java.util.List;
 
 /**
@@ -12,11 +13,10 @@ import java.util.List;
  */
 public class FireSwordCommand implements CommandImplementation {
 
-    private final FireSwordService service;
+    @Inject
+    private FireSwordService service;
 
-    public FireSwordCommand(FireSwordService service) {
-        this.service = service;
-    }
+    FireSwordCommand() { }
 
     @Override
     public String getLabel() {

@@ -3,6 +3,7 @@ package ch.jalu.authme.integrationdemo.command;
 import ch.jalu.authme.integrationdemo.service.AuthMeHook;
 import org.bukkit.command.CommandSender;
 
+import javax.inject.Inject;
 import java.util.List;
 
 /**
@@ -10,11 +11,10 @@ import java.util.List;
  */
 public class ExistsCommand implements CommandImplementation {
 
-    private final AuthMeHook authMeHook;
+    @Inject
+    private AuthMeHook authMeHook;
 
-    public ExistsCommand(AuthMeHook authMeHook) {
-        this.authMeHook = authMeHook;
-    }
+    ExistsCommand() { }
 
     @Override
     public String getLabel() {
