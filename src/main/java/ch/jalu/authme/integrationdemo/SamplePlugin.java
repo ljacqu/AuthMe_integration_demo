@@ -1,9 +1,6 @@
 package ch.jalu.authme.integrationdemo;
 
-import ch.jalu.authme.integrationdemo.command.CommandException;
-import ch.jalu.authme.integrationdemo.command.CommandImplementation;
-import ch.jalu.authme.integrationdemo.command.ExistsCommand;
-import ch.jalu.authme.integrationdemo.command.FireSwordCommand;
+import ch.jalu.authme.integrationdemo.command.CommandHandler;
 import ch.jalu.authme.integrationdemo.listener.AuthMeListener;
 import ch.jalu.authme.integrationdemo.listener.BukkitListener;
 import ch.jalu.authme.integrationdemo.service.AuthMeHook;
@@ -15,18 +12,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Sample plugin.
  */
 public class SamplePlugin extends JavaPlugin {
 
-    // List of commands (label -> command)
-    private Map<String, CommandImplementation> commands;
-
+    private CommandHandler commandHandler;
     // AuthMe integration
     private Listener authMeListener;
     private AuthMeHook authMeHook;
@@ -40,9 +31,7 @@ public class SamplePlugin extends JavaPlugin {
 
         SampleLogger.setLogger(getLogger());
         authMeHook = injector.getSingleton(AuthMeHook.class);
-
-        // Initialize commands
-        registerCommands(injector.getSingleton(FireSwordCommand.class), injector.getSingleton(ExistsCommand.class));
+        commandHandler = injector.getSingleton(CommandHandler.class);
 
         // Register the regular listener
         final PluginManager pluginManager = getServer().getPluginManager();
@@ -55,22 +44,8 @@ public class SamplePlugin extends JavaPlugin {
     }
 
     @Override
-    public void onDisable() {
-        commands = null;
-    }
-
-    @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        CommandImplementation cmd = commands.get(label.toLowerCase());
-        if (cmd == null) {
-            return false;
-        }
-        try {
-            cmd.performCommand(sender, Arrays.asList(args));
-        } catch (CommandException e) {
-            sender.sendMessage("Error: " + e.getMessage());
-        }
-        return true;
+        return commandHandler.onCommand(sender, label, args);
     }
 
     /**
@@ -92,17 +67,5 @@ public class SamplePlugin extends JavaPlugin {
     public void removeAuthMeHook() {
         SampleLogger.info("Unhooking from AuthMe");
         authMeHook.removeAuthMeHook();
-    }
-
-    /**
-     * Registers the given commands.
-     *
-     * @param givenCommands the commands to register
-     */
-    private void registerCommands(CommandImplementation... givenCommands) {
-        commands = new HashMap<>();
-        for (CommandImplementation command : givenCommands) {
-            commands.put(command.getLabel(), command);
-        }
     }
 }
