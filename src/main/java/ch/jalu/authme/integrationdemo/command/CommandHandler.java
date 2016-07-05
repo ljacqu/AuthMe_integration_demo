@@ -1,6 +1,6 @@
 package ch.jalu.authme.integrationdemo.command;
 
-import ch.jalu.injector.AllInstances;
+import ch.jalu.injector.annotations.AllInstances;
 import org.bukkit.command.CommandSender;
 
 import javax.inject.Inject;

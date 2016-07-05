@@ -69,6 +69,12 @@
             <id>xephi-repo</id>
             <url>http://ci.xephi.fr/plugin/repository/everything/</url>
         </repository>
+
+        <!-- OSSRH snapshot repository - don't use this to get the injector, use stable releases -->
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </repository>
     </repositories>
 
 
@@ -96,6 +102,7 @@
             <optional>true</optional>
         </dependency>
 
+        <!-- Jalu injector -->
         <dependency>
             <groupId>ch.jalu</groupId>
             <artifactId>injector</artifactId>
@@ -103,5 +110,11 @@
             <scope>compile</scope>
         </dependency>
 
+        <!-- Reflections -->
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.9.10</version>
+        </dependency>
     </dependencies>
 </project>

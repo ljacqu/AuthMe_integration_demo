@@ -6,6 +6,7 @@ import ch.jalu.authme.integrationdemo.listener.BukkitListener;
 import ch.jalu.authme.integrationdemo.service.AuthMeHook;
 import ch.jalu.injector.Injector;
 import ch.jalu.injector.InjectorBuilder;
+import ch.jalu.injector.handlers.dependency.AllInstancesAnnotationHandler;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.event.Listener;
@@ -24,8 +25,10 @@ public class SamplePlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        String rootPackage = "ch.jalu.authme.integrationdemo";
         Injector injector = new InjectorBuilder()
-                .addDefaultHandlers("ch.jalu.authme.integrationdemo")
+                .addHandlers(new AllInstancesAnnotationHandler(rootPackage))
+                .addDefaultHandlers(rootPackage)
                 .create();
         injector.register(SamplePlugin.class, this);
 
