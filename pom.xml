@@ -12,7 +12,7 @@
         <!-- Change Spigot version here -->
         <spigot.version>1.11-R0.1-SNAPSHOT</spigot.version>
         <!-- Change AuthMe version here -->
-        <authme.version>5.2-SNAPSHOT</authme.version>
+        <authme.version>5.3-SNAPSHOT</authme.version>
     </properties>
 
     <build>
