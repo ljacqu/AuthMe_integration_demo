@@ -32,7 +32,7 @@ declare the dependency to AuthMe.
         <dependency>
             <groupId>fr.xephi</groupId>
             <artifactId>authme</artifactId>
-            <version>5.2-SNAPSHOT</version>
+            <version>5.4-SNAPSHOT</version>
             <optional>true</optional>
         </dependency>
     </dependencies>

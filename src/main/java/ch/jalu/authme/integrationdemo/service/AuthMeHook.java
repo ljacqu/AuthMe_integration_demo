@@ -1,6 +1,6 @@
 package ch.jalu.authme.integrationdemo.service;
 
-import fr.xephi.authme.api.NewAPI;
+import fr.xephi.authme.api.v3.AuthMeApi;
 
 /**
  * AuthMe hook - class that handles talking with the AuthMe plugin.
@@ -12,10 +12,10 @@ import fr.xephi.authme.api.NewAPI;
  */
 public class AuthMeHook {
 
-    private NewAPI authMeApi = null;
+    private AuthMeApi authMeApi = null;
 
     public void initializeAuthMeHook() {
-        authMeApi = NewAPI.getInstance();
+        authMeApi = AuthMeApi.getInstance();
     }
 
     public void removeAuthMeHook() {
