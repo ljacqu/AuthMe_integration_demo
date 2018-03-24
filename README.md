@@ -1,5 +1,5 @@
 # AuthMe Integration Demo
-This is a small Minecraft plugin that shows how to hook into [AuthMe](https://github.com/AuthMe-Team/AuthMeReloaded).
+This is a small Minecraft plugin that shows how to hook into [AuthMe](https://github.com/AuthMe/AuthMeReloaded).
 
 - [1. Declare AuthMe dependency](#1-declare-authme-dependency)
   - [1.1. pom.xml](#11-pomxml)
@@ -21,10 +21,10 @@ declare the dependency to AuthMe.
 
 ```xml
     <repositories>
-        <!-- Xephi repo -->
+        <!-- CodeMC repo -->
         <repository>
-            <id>xephi-repo</id>
-            <url>http://ci.xephi.fr/plugin/repository/everything/</url>
+            <id>codemc</id>
+            <url>http://repo.codemc.org/repository/maven-public/</url>
         </repository>
     </repositories>
     <dependencies>

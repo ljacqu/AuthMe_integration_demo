@@ -44,10 +44,10 @@
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots</url>
         </repository>
 
-        <!-- Xephi repo -->
+        <!-- CodeMC repo -->
         <repository>
-            <id>xephi-repo</id>
-            <url>http://ci.xephi.fr/plugin/repository/everything/</url>
+            <id>codemc</id>
+            <url>http://repo.codemc.org/repository/maven-public/</url>
         </repository>
     </repositories>
 
