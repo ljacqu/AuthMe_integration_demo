@@ -71,7 +71,7 @@ public void onLogin(LoginEvent event) {
 ```
 
 ### 2.2. Using the AuthMe API
-The AuthMe [AuthMeApi class](https://ci.codemc.org/job/AuthMe/job/AuthMeReloaded/javadoc/fr/xephi/authme/api/v3/AuthMeApi.html) allows you
+The [AuthMeApi class](https://ci.codemc.org/job/AuthMe/job/AuthMeReloaded/javadoc/fr/xephi/authme/api/v3/AuthMeApi.html) allows you
 to perform various operations, such as registering a new name or querying AuthMe if a username password combination 
 is correct. It is suggested that you wrap all method calls to the AuthMe API class with a class of your own. 
 This way you can easily manage loading and unloading the API (see next chapter).
@@ -81,7 +81,7 @@ import fr.xephi.authme.api.v3.AuthMeApi;
 
 // This should be the only class that uses AuthMe's AuthMeApi
 public class AuthMeHook {
-  private NewAPI authMeApi;
+  private AuthMeApi authMeApi;
 
   // We will see when it's safe to invoke this in the next chapter
   public void initializeHook() {
