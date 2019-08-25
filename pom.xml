@@ -10,9 +10,9 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- Change Spigot version here -->
-        <spigot.version>1.12-R0.1-SNAPSHOT</spigot.version>
+        <spigot.version>1.14.2-R0.1-SNAPSHOT</spigot.version>
         <!-- Change AuthMe version here -->
-        <authme.version>5.4-SNAPSHOT</authme.version>
+        <authme.version>5.5-SNAPSHOT</authme.version>
     </properties>
 
     <build>

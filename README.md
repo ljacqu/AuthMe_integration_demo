@@ -32,14 +32,14 @@ declare the dependency to AuthMe.
         <dependency>
             <groupId>fr.xephi</groupId>
             <artifactId>authme</artifactId>
-            <version>5.4-SNAPSHOT</version>
+            <version>5.5-SNAPSHOT</version>
             <optional>true</optional>
         </dependency>
     </dependencies>
 ```
 
-- Adding Xephi's repository to `<repositories>` tells Maven to (also) look there for the JAR
-- Note the `<optional>true</optional>`. This means it will be available in your IDE and at compile time 
+- Adding the CodeMC repository to `<repositories>` tells Maven to (also) look there for the JAR
+- Note the `<optional>true</optional>`. This means it will be available in your IDE and at compile time
   but it means your plugin doesn't absolutely need it to work. It won't be included in your JAR file.
   
 ### 1.2. plugin.yml
@@ -59,7 +59,7 @@ Two ways are available to interact with AuthMe:
 
 ### 2.1. Listening to AuthMe events
 It is best to create a separate class (or classes) for listening to 
-[AuthMe events](http://ci.xephi.fr/job/AuthMeReloaded/javadoc/fr/xephi/authme/events/package-tree.html). 
+[AuthMe events](https://ci.codemc.org/job/AuthMe/job/AuthMeReloaded/javadoc/fr/xephi/authme/events/package-tree.html).
 As with regular Bukkit events, simply declare `@EventHandler` methods that take an AuthMe event as argument.
 ```java
 import fr.xephi.authme.events.LoginEvent;
@@ -71,21 +71,21 @@ public void onLogin(LoginEvent event) {
 ```
 
 ### 2.2. Using the AuthMe API
-The AuthMe [NewAPI class](http://ci.xephi.fr/job/AuthMeReloaded/javadoc/fr/xephi/authme/api/NewAPI.html) allows you 
+The AuthMe [AuthMeApi class](https://ci.codemc.org/job/AuthMe/job/AuthMeReloaded/javadoc/fr/xephi/authme/api/v3/AuthMeApi.html) allows you
 to perform various operations, such as registering a new name or querying AuthMe if a username password combination 
 is correct. It is suggested that you wrap all method calls to the AuthMe API class with a class of your own. 
 This way you can easily manage loading and unloading the API (see next chapter).
 
 ```java
-import fr.xephi.authme.api.NewAPI;
+import fr.xephi.authme.api.v3.AuthMeApi;
 
-// This should be the only class that uses AuthMe's NewAPI
+// This should be the only class that uses AuthMe's AuthMeApi
 public class AuthMeHook {
   private NewAPI authMeApi;
 
   // We will see when it's safe to invoke this in the next chapter
   public void initializeHook() {
-    authMeApi = NewAPI.getInstance();
+    authMeApi = AuthMeApi.getInstance();
   }
 
   public boolean registerPlayer(String name, String password) {
@@ -111,7 +111,7 @@ public void onEnable() {
   // other initializations...
   
   if (getServer().getPluginManager().isPluginEnabled("AuthMe")) {
-    // it's safe to get AuthMe's NewAPI instance, and so forth...
+    // it's safe to get AuthMe's AuthMeApi instance, and so forth...
     getServer().getPluginManager().registerEvents(new AuthMeListener(), this);
     authMeHook.initializeHook();
   }
@@ -136,7 +136,7 @@ that your plugin will run smoothly.
 @EventHandler 
 public void onDisable(PluginDisableEvent event) {
   if ("AuthMe".equals(event.getPlugin().getName())) {
-    authMeHook.disableHook(); // set the NewAPI field to null
+    authMeHook.disableHook(); // set the AuthMeApi field to null
   }
 }
 
@@ -158,7 +158,7 @@ example for all points in this document.
   be granted (in `onPrelogin()`). Once a player has been logged in, the listener will make the player output a
   random greeting (in `onLogin()`).
 - 2.2: [AuthMeHook](https://github.com/ljacqu/AuthMe_integration_demo/blob/master/src/main/java/ch/jalu/authme/integrationdemo/service/AuthMeHook.java)
-  manages the interactions with AuthMe's NewAPI class. It is used in [ExistsCommand](https://github.com/ljacqu/AuthMe_integration_demo/blob/master/src/main/java/ch/jalu/authme/integrationdemo/command/ExistsCommand.java),
+  manages the interactions with AuthMe's AuthmeApi class. It is used in [ExistsCommand](https://github.com/ljacqu/AuthMe_integration_demo/blob/master/src/main/java/ch/jalu/authme/integrationdemo/command/ExistsCommand.java),
   which implements a command that tells players whether a username is registered or not (e.g. `/exists test`).
 - 3.1: [SamplePlugin](https://github.com/ljacqu/AuthMe_integration_demo/blob/master/src/main/java/ch/jalu/authme/integrationdemo/SamplePlugin.java)
   is the main plugin class and defines a `registerAuthMeComponents()` method. At the end of `onEnable()` we check if

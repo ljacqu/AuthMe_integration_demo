@@ -14,7 +14,7 @@ public class FireSwordService {
      * The item that acts as a fire sword: if held in the hand and the player clicks,
      * it will launch fireballs.
      */
-    public static final Material FIRE_SWORD = Material.GOLD_SWORD;
+    public static final Material FIRE_SWORD = Material.GOLDEN_SWORD;
 
     private Set<String> hasFireSword = new HashSet<>();
 
